@@ -11,7 +11,48 @@ public class Customer {
 				this.creditCard = creditCard;
 		}
 
-		private String name;
+	public abstract class CreditCard {
+		public static void main(String[] args) {
+			// Creëer een EmailContact-object en roep de sendMessage()-methode aan
+			ContactInfo emailContact = new EmailContact("johndoe@example.com");
+			emailContact.sendMessage();
+		}
+
+		public interface ContactInfo {
+			void sendMessage();
+		}
+
+		private int debt;
+
+		public CreditCard(int debt) {
+			this.debt = debt;
+		}
+
+		public void pay(int amount) {
+			this.debt = this.debt + amount;
+		}
+
+		public int getDebt() {
+			return debt;
+		}
+
+		public void setDebt(int debt) {
+			this.debt = debt;
+		}
+
+		public static class EmailContact implements ContactInfo {
+			private String email;
+
+			public EmailContact(String email) {
+				this.email = email;
+			}
+
+			@Override
+			public void sendMessage() {
+				System.out.println("Sending email to " + email);
+			}
+		}
+	}
 
 		private int customerNumber;
 		private String lastName;
@@ -19,7 +60,7 @@ public class Customer {
 		private CreditCard creditCard;
 
 		public String getName(){
-				return name;
+				return Name;
 		}
 
 		public void setName(String name){
